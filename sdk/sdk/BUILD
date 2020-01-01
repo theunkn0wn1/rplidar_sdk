@@ -9,10 +9,10 @@ cc_library(
         "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.cpp"]),
         "//conditions:default": glob(["src/arch/linux/*.cpp"]),
     }),
-    hdrs = glob(["\include\*.h"]) + select({
-        "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.hpp"]),
-        "//conditions:default": glob(["src/arch/linux/*.hpp"]),
-    }) + glob(["src/*.h"]),
+    hdrs = glob([r"include/*.h"]) + select({
+        "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.hpp"]) + glob(["src/arch/win32/*.h"]),
+        "//conditions:default": glob(["src/arch/linux/*.hpp"]) + glob(["src/arch/linux/*.h"]),
+    }) + glob([r"src/*.h", r"src/hal/*.h"]),
     includes = [
         "include",
         "src",
