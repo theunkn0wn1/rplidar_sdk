@@ -7,7 +7,7 @@
 
 //Basic types
 //
-#ifdef WIN32
+#ifdef _WIN32
 
 //fake stdint.h for VC only
 
@@ -61,10 +61,10 @@ typedef uint64_t       _u64;
 #ifdef _AVR_
 typedef _u8            _word_size_t;
 #define THREAD_PROC    
-#elif defined (WIN64)
+#elif defined (_WIN64)
 typedef _u64           _word_size_t;
 #define THREAD_PROC    __stdcall
-#elif defined (WIN32)
+#elif defined (_WIN32)
 typedef _u32           _word_size_t;
 #define THREAD_PROC    __stdcall
 #elif defined (__GNUC__)
