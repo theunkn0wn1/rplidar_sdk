@@ -7,7 +7,7 @@ cc_library(
         "src/hal/thread.cpp"
         ] + select({
             "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.cpp"]),
-            "@bazel_tools//src/conditions:linux_x86_64": glob(["src/arch/linux/*.cpp"]),
+            "@bazel_tools//src/conditions:default": glob(["src/arch/linux/*.cpp"]),
 
         }),
     hdrs = glob(["\include\*.h"]) + select({
