@@ -12,7 +12,7 @@ cc_library(
         }),
     hdrs = glob(["\include\*.h"]) + select({
         "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.hpp"]),
-        "@bazel_tools//src/conditions:linux_x86_64": glob(["src/arch/linux/*.hpp"]),
+        "@bazel_tools//src/conditions:default": glob(["src/arch/linux/*.hpp"]),
         }) + glob(["src/*.h"]),
     includes = ["include", "src"],
     visibility = ["//visibility:public"],
