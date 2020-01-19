@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(rplidar_sdk)
-set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB base_sources src/*.cpp src/hal/*.cpp)
 file(GLOB base_includes src/*.h src/*.hpp src/hal/*.h src/hal/*.hpp)
@@ -31,3 +29,4 @@ endif ()
 # glob shared C++ sources
 add_library(rplidar_sdk SHARED ${base_sources} ${platform_srcs})
 include_directories(src src/hal include)
+
