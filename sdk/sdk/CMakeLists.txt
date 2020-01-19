@@ -30,5 +30,5 @@ endif ()
 add_library(rplidar_sdk SHARED ${base_sources} ${platform_srcs})
 include_directories(src src/hal include)
 
-install(TARGETS rplidar_sdk)
+install(TARGETS rplidar_sdk DESTINATION rplidar_sdk)
 
