@@ -35,6 +35,6 @@ include_directories(src src/hal include)
 
 install(
         TARGETS rplidar_sdk
-        DESTINATION rplidar_sdk EXPORT rplidar_sdk
+        DESTINATION .
 )
 
