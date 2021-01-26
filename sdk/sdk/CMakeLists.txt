@@ -10,7 +10,6 @@ if (WIN32 AND NOT MINGW)
     message(STATUS "Detected Windows target...")
     file(GLOB platform_srcs src/arch/win32/*.hpp src/arch/win32/*.cpp)
     include_directories(src/arch/win32)
-    target_include_directories(rplidar_sdk PUBLIC src/arch/win32)
 elseif (MINGW)
     # Library doesn't build under MinGW, no idea why.
     message(FATAL_ERROR "Mingw is presently not supported.")
@@ -18,13 +17,11 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES Linux)
     message(STATUS "linux target...")
     file(GLOB platform_srcs src/arch/linux/*.hpp src/arch/linux/*.cpp)
     include_directories(src/arch/linux)
-    target_include_directories(rplidar_sdk PUBLIC src/arch/linux)
 
 elseif (${CMAKE_SYSTEM_NAME} MATCHES Darwin)
     message(STATUS "Apple Mac OS X target...")
     file(GLOB platform_srcs src/arch/macOS/*.hpp src/arch/macOS/*.cpp)
     include_directories(src/arch/macOS)
-    target_include_directories(rplidar_sdk PUBLIC src/arch/macOS)
 else ()
     message(FATAL_ERROR "Unknown platform ${CMAKE_SYSTEM_NAME}, build cannot continue.")
 endif ()
@@ -32,7 +29,7 @@ endif ()
 
 
 target_include_directories(
-        rplidar_sdk PUBLIC src src/hal include
+        rplidar_sdk INTERFACE include src
 )
 include_directories(src src/hal include)
 
