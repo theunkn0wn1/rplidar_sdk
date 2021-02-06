@@ -9,10 +9,21 @@ cc_library(
         "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.cpp"]),
         "//conditions:default": glob(["src/arch/linux/*.cpp"]),
     }),
-    hdrs = glob([r"include/*.h"]) + select({
+    hdrs = glob(["include/*.h"]) + select({
         "@bazel_tools//src/conditions:windows": glob(["src/arch/win32/*.hpp"]) + glob(["src/arch/win32/*.h"]),
         "//conditions:default": glob(["src/arch/linux/*.hpp"]) + glob(["src/arch/linux/*.h"]),
-    }) + glob([r"src/*.h", r"src/hal/*.h"]),
+    }) + glob([
+        "src/*.h",
+        "src/hal/*.h",
+    ]),
+    # NOTICE: Ugly hack is ugly, but required in builds that enable -werr
+    # NOTICE: mainly because there is magic in this lib I don't want to attempt to fix.
+    copts = [
+        "-Wno-unused-variable",
+        "-Wno-sign-compare",
+        "-Wno-unused-but-set-variable",
+        "-Wno-parentheses",
+    ],
     includes = [
         "include",
         "src",
