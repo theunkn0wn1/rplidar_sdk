@@ -670,7 +670,7 @@ int RPlidarDriverImplCommon::_getSyncBitByAngle(const int current_angle_q16, con
 {
     static int last_angleInc_q16 = 0;
     int current_angleInc_q16 = angleInc_q16;
-    int syncBit_check_threshold = (int)((5 << 16) / angleInc_q16) + 1;//find syncBit in 0~3 degree
+//    int syncBit_check_threshold = (int)((5 << 16) / angleInc_q16) + 1;//find syncBit in 0~3 degree
     int syncBit = 0;
     int predict_angle_q16 = (current_angle_q16 + angleInc_q16) % (360 << 16);
 
@@ -2219,7 +2219,7 @@ u_result RPlidarDriverImplCommon::startMotor()
         }
     }
     else {
-        setLidarSpinSpeed(600);//set default rpm to tof lidar
+        return setLidarSpinSpeed(600);//set default rpm to tof lidar
     }
 
 }
