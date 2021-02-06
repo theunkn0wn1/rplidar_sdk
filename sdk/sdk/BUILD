@@ -23,6 +23,7 @@ cc_library(
         "-Wno-sign-compare",
         "-Wno-unused-but-set-variable",
         "-Wno-parentheses",
+        "-Wno-unused-result",
     ],
     includes = [
         "include",
