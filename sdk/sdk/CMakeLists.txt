@@ -25,10 +25,17 @@ else ()
     message(FATAL_ERROR "Unknown platform ${CMAKE_SYSTEM_NAME}, build cannot continue.")
 endif ()
 
-
 # glob shared C++ sources
-add_library(rplidar_sdk SHARED ${base_sources} ${platform_srcs})
+add_library(rplidar_sdk STATIC ${base_sources} ${platform_srcs})
+
+target_include_directories(
+        rplidar_sdk INTERFACE include src
+)
+
 include_directories(src src/hal include)
 
-install(TARGETS rplidar_sdk DESTINATION rplidar_sdk)
+install(
+        TARGETS rplidar_sdk
+        DESTINATION .
+)
 
